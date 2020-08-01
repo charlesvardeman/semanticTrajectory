@@ -1,0 +1,298 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix test: <http://w3id.org/test#> .
+#  Ontology MUST contain a tile in rdfs:label or skos:prefLabel or dct:title or dc:title
+#  Ontology MUST contain a valid dct:created as xsd:date or xsd:dateTime
+#  Ontology MUST contain a tile in rdfs:label or skos:prefLabel or dct:title or dc:title
+#  Ontology MUST contain a tile in rdfs:label or skos:prefLabel or dct:title or dc:title
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+#  Ontology MUST contain a tile in rdfs:label or skos:prefLabel or dct:title or dc:title
+
+test:ontoshape a sh:NodeShape , sh:NodeShape , sh:NodeShape ;
+	sh:targetClass owl:Ontology , owl:Ontology ;
+	a sh:NodeShape ;
+	sh:targetClass owl:Ontology , owl:Ontology .
+
+_:BCBkjO5pcRwP-s6vDsHrK_ sh:path dct:created .
+
+_:B5wFV9fVibXLI0akqxgRqF sh:path dct:rights .
+
+_:N3ok4Ds4mwAMTBIoUQiUaZ sh:path rdfs:label .
+
+_:BCBkjO5pcRwP-s6vDsHrK_ sh:minCount 1 .
+
+_:B5wFV9fVibXLI0akqxgRqF sh:datatype xsd:string .
+
+_:BCBkjO5pcRwP-s6vDsHrK_ sh:maxCount 1 .
+
+_:N3ok4Ds4mwAMTBIoUQiUaZ sh:datatype xsd:string ;
+	sh:minCount 1 .
+
+_:B5wFV9fVibXLI0akqxgRqF sh:minCount 1 .
+
+_:LnrMh-sa0DlATrwxQmZyTd sh:datatype xsd:date .
+
+_:GXagcIo9uVxBukORLaTZW2 sh:property _:N3ok4Ds4mwAMTBIoUQiUaZ .
+
+_:EJ67UKmCsVDIBXJN4ZmEJj sh:property _:B5wFV9fVibXLI0akqxgRqF .
+
+_:O5UdUbOCSumGIyf9G4plSu rdf:first _:LnrMh-sa0DlATrwxQmZyTd .
+
+_:K1sYIMqCqRAAQcpqskxPxd rdf:first _:GXagcIo9uVxBukORLaTZW2 .
+
+_:O5UdUbOCSumGIyf9G4plSu rdf:rest _:JqO9LsjRsLMOFZ_yxLEfmv .
+
+_:K1sYIMqCqRAAQcpqskxPxd rdf:rest _:G92rLkyHMBsJ5pzBc18wyU .
+
+_:K0vZ1bMiRs4O1cZe0TptMf rdf:first _:EJ67UKmCsVDIBXJN4ZmEJj ;
+	rdf:rest _:LxibE5GJMSKNXXxplmh76M .
+
+_:KPeTJIz7fUCOO9H7vOTb5f sh:datatype xsd:dateTime .
+
+_:PCHuLZIoPJtO4QM0r8NaLX sh:path skos:prefLabel .
+
+_:JqO9LsjRsLMOFZ_yxLEfmv rdf:first _:KPeTJIz7fUCOO9H7vOTb5f ;
+	rdf:rest rdf:nil .
+
+_:PCHuLZIoPJtO4QM0r8NaLX sh:datatype xsd:string .
+
+_:AwRkndr_lwTJTkm8hcUf0c sh:path dct:license .
+
+test:ontoshape a sh:NodeShape .
+
+_:BCBkjO5pcRwP-s6vDsHrK_ sh:or _:O5UdUbOCSumGIyf9G4plSu .
+
+test:ontoshape sh:property _:BCBkjO5pcRwP-s6vDsHrK_ .
+
+_:PCHuLZIoPJtO4QM0r8NaLX sh:minCount 1 .
+
+_:AwRkndr_lwTJTkm8hcUf0c sh:NodeKind sh:IRI .
+
+test:ontoshape sh:targetClass owl:Ontology .
+
+_:KRsNKIacbZ2FrWYvR__j2p sh:property _:PCHuLZIoPJtO4QM0r8NaLX .
+
+test:ontoshape sh:nodeKind sh:IRI .
+
+_:G92rLkyHMBsJ5pzBc18wyU rdf:first _:KRsNKIacbZ2FrWYvR__j2p ;
+	rdf:rest _:HuJq_IdCUn4Lg1EF3aip9y .
+
+_:AwRkndr_lwTJTkm8hcUf0c sh:minCount 1 .
+
+_:MPHtDFARgOdHBQ3zaABklx sh:property _:AwRkndr_lwTJTkm8hcUf0c .
+
+_:LxibE5GJMSKNXXxplmh76M rdf:first _:MPHtDFARgOdHBQ3zaABklx .
+
+_:CuyuqhXo9J4PC4IiqS2tde sh:path dct:title .
+
+_:LxibE5GJMSKNXXxplmh76M rdf:rest rdf:nil .
+
+_:C2qxmiWv4nAEU6GrLluZkb sh:path dc:creator .
+
+test:ontoshape sh:or _:K0vZ1bMiRs4O1cZe0TptMf .
+
+_:CuyuqhXo9J4PC4IiqS2tde sh:datatype xsd:string .
+
+_:C2qxmiWv4nAEU6GrLluZkb sh:datatype xsd:string ;
+	sh:minCount 1 .
+
+_:C59UuXtoqtLGBRHC3_peE6 sh:path rdfs:comment .
+
+_:J_8Iw8NmufEE1-j3EAl1GM sh:property _:C2qxmiWv4nAEU6GrLluZkb .
+
+_:C59UuXtoqtLGBRHC3_peE6 sh:datatype xsd:string .
+
+_:MUoZ52qNlliFiFzRZFWiSU rdf:first _:J_8Iw8NmufEE1-j3EAl1GM .
+
+_:CuyuqhXo9J4PC4IiqS2tde sh:minCount 1 .
+
+_:MUoZ52qNlliFiFzRZFWiSU rdf:rest _:DqK1855tLAUAaIVq-c7_Q_ .
+
+_:C59UuXtoqtLGBRHC3_peE6 sh:minCount 1 .
+
+_:FZYLrEDWX4OHynOBAv5qGj sh:property _:CuyuqhXo9J4PC4IiqS2tde .
+
+_:BznKzk82ODZO3h8Who5h0C sh:property _:C59UuXtoqtLGBRHC3_peE6 .
+
+_:HuJq_IdCUn4Lg1EF3aip9y rdf:first _:FZYLrEDWX4OHynOBAv5qGj .
+
+_:GXqME9Y0w2RLgeRGa8IuMZ rdf:first _:BznKzk82ODZO3h8Who5h0C .
+
+_:HuJq_IdCUn4Lg1EF3aip9y rdf:rest _:HP43aXkUtMDIBtdslFvGDL .
+
+_:JnXqsiyMRVJCjH3qbKWhkD sh:path dct:creator .
+
+_:GXqME9Y0w2RLgeRGa8IuMZ rdf:rest _:LRVdz9RLwUqBtdr_bt86Iv .
+
+_:Oao0nUShYWSOs1O9kNyMWz sh:path dc:title .
+
+_:JnXqsiyMRVJCjH3qbKWhkD sh:node test:User .
+
+_:EtcK-jhYn6FPjl_wjM2KdQ sh:path skos:definition .
+
+_:Oao0nUShYWSOs1O9kNyMWz sh:datatype xsd:string .
+
+_:EtcK-jhYn6FPjl_wjM2KdQ sh:datatype xsd:string .
+
+_:JnXqsiyMRVJCjH3qbKWhkD sh:minCount 1 .
+
+_:MmW-8m7Sgw4BmEjXlctTEu sh:property _:JnXqsiyMRVJCjH3qbKWhkD .
+
+_:Oao0nUShYWSOs1O9kNyMWz sh:minCount 1 .
+
+_:EtcK-jhYn6FPjl_wjM2KdQ sh:minCount 1 .
+
+_:HrXtd7p06GZOMdik4IQZyP sh:property _:EtcK-jhYn6FPjl_wjM2KdQ .
+
+_:DqK1855tLAUAaIVq-c7_Q_ rdf:first _:MmW-8m7Sgw4BmEjXlctTEu .
+
+_:H_bjKJueiZ1N0-JbVVldOD sh:property _:Oao0nUShYWSOs1O9kNyMWz .
+
+_:LRVdz9RLwUqBtdr_bt86Iv rdf:first _:HrXtd7p06GZOMdik4IQZyP .
+
+_:DqK1855tLAUAaIVq-c7_Q_ rdf:rest rdf:nil .
+
+_:HP43aXkUtMDIBtdslFvGDL rdf:first _:H_bjKJueiZ1N0-JbVVldOD .
+
+test:ontoshape sh:or _:MUoZ52qNlliFiFzRZFWiSU .
+
+_:LRVdz9RLwUqBtdr_bt86Iv rdf:rest _:GyTt3-XbDqJDL8pfFB9fZV .
+
+_:HP43aXkUtMDIBtdslFvGDL rdf:rest rdf:nil .
+
+test:ontoshape sh:or _:K1sYIMqCqRAAQcpqskxPxd .
+
+test:User a sh:NodeShape .
+
+_:NCqh5_ASdd-LYKAAhcvxp3 sh:path dct:description .
+
+test:User sh:nodeKind sh:BlankNodeOrIRI .
+
+_:NCqh5_ASdd-LYKAAhcvxp3 sh:datatype xsd:string .
+
+_:P9r4bSBK6b0H0a8WJB-43X sh:targetClass sdo:Person .
+
+_:NCqh5_ASdd-LYKAAhcvxp3 sh:minCount 1 .
+
+_:MhHs2frJucbA938paDBQwT rdf:first _:P9r4bSBK6b0H0a8WJB-43X .
+
+_:LWfxiWfNRyXGgpC1oAUq4w sh:property _:NCqh5_ASdd-LYKAAhcvxp3 .
+
+_:MhHs2frJucbA938paDBQwT rdf:rest _:Fhdve1sIddrAizA4BuCBIW .
+
+_:GyTt3-XbDqJDL8pfFB9fZV rdf:first _:LWfxiWfNRyXGgpC1oAUq4w ;
+	rdf:rest _:EzMo_eotdtLLKtNkD0aOOm .
+
+_:EOs1cX1kWUxCaJ8pjV1D_q sh:targetClass sdo:Organization .
+
+_:Fhdve1sIddrAizA4BuCBIW rdf:first _:EOs1cX1kWUxCaJ8pjV1D_q .
+
+_:N7tJub8nJs0O2TRUNCMVge sh:path dc:description .
+
+_:Fhdve1sIddrAizA4BuCBIW rdf:rest _:J5Dio2s3NrrNh8zguCBxuC .
+
+_:N7tJub8nJs0O2TRUNCMVge sh:datatype xsd:string ;
+	sh:minCount 1 .
+
+_:DCX_-SciOLaJzSQEtbUuOo sh:targetClass foaf:Person .
+
+_:LM30y4OoZoAFdmTEUXzIk5 sh:property _:N7tJub8nJs0O2TRUNCMVge .
+
+_:EzMo_eotdtLLKtNkD0aOOm rdf:first _:LM30y4OoZoAFdmTEUXzIk5 .
+
+_:J5Dio2s3NrrNh8zguCBxuC rdf:first _:DCX_-SciOLaJzSQEtbUuOo .
+
+_:EzMo_eotdtLLKtNkD0aOOm rdf:rest rdf:nil .
+
+test:ontoshape sh:or _:GXqME9Y0w2RLgeRGa8IuMZ .
+
+_:J5Dio2s3NrrNh8zguCBxuC rdf:rest _:FT9oma5EiCoMkJNYxCF309 .
+
+_:PXw2VQR-YwyG5xMlFMp0oe sh:targetClass foaf:Organization .
+
+_:FT9oma5EiCoMkJNYxCF309 rdf:first _:PXw2VQR-YwyG5xMlFMp0oe ;
+	rdf:rest rdf:nil .
+
+test:User sh:or _:MhHs2frJucbA938paDBQwT .
+
+_:KBz1FfDIMULAbJJk47atZw sh:path sdo:creator ;
+	sh:datatype xsd:string ;
+	sh:minCount 1 .
+
+test:User sh:property _:KBz1FfDIMULAbJJk47atZw .
+
+_:DKnLEVPbNDdCXKoYXcBihw sh:path sdo:identifier .
+
+_:PDVbDtGEVEDNuUaa_p5D5C sh:datatype xsd:string .
+
+_:BfP_Ez3o3pGP_X1Q11OQMT rdf:first _:PDVbDtGEVEDNuUaa_p5D5C ;
+	rdf:rest _:PjMHi43W5LbLHVVzYyfhyb .
+
+_:Ej5dhotmawOO2DKgnoD39G sh:nodeKind sh:IRI .
+
+_:PjMHi43W5LbLHVVzYyfhyb rdf:first _:Ej5dhotmawOO2DKgnoD39G ;
+	rdf:rest _:HG3iUbliSl2ObZZWUayjdM .
+
+_:DxEQ0N6Y5hzB-lliebhIgw sh:datatype sdo:PropertyValue .
+
+_:HG3iUbliSl2ObZZWUayjdM rdf:first _:DxEQ0N6Y5hzB-lliebhIgw ;
+	rdf:rest rdf:nil .
+
+_:DKnLEVPbNDdCXKoYXcBihw sh:or _:BfP_Ez3o3pGP_X1Q11OQMT ;
+	sh:minCount 1 .
+
+test:User sh:property _:DKnLEVPbNDdCXKoYXcBihw .
+
+_:KfMPNsIb3C-E36hCO8BQ33 sh:path sdo:email ;
+	sh:minCount 1 ;
+	sh:datatype xsd:string .
+
+test:User sh:property _:KfMPNsIb3C-E36hCO8BQ33 .
+
+_:Ay-_V8nuI1UH5K-q_NIvUX sh:path sdo:affiliation ;
+	sh:node test:Affiliation .
+
+test:User sh:property _:Ay-_V8nuI1UH5K-q_NIvUX .
+
+test:Affiliation a sh:NodeShape ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:targetClass sdo:Organization .
+
+_:GgT9_dW9MZ1EkzvLeMoUDI sh:path sdo:name ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:datatype xsd:string .
+
+test:Affiliation sh:property _:GgT9_dW9MZ1EkzvLeMoUDI .
+
+_:PHl16uc45H1KdMHB9rgFPU sh:path sdo:url ;
+	sh:minCount 1 ;
+	sh:datatype xsd:string .
+
+test:Affiliation sh:property _:PHl16uc45H1KdMHB9rgFPU .
+
+test:memberOf a sh:NodeShape ;
+	sh:nodeKind sh:BlankNodeOrIRI ;
+	sh:targetClass sdo:Organization .
+
+_:BoDFzTAO9VTCm3rh9vE4FO sh:path sdo:name ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:datatype xsd:string .
+
+test:memberOf sh:property _:BoDFzTAO9VTCm3rh9vE4FO .
+
+_:J6oM5_XpnurGwjWpP_-Afm sh:path sdo:url ;
+	sh:minCount 1 ;
+	sh:datatype xsd:string .
+
+test:memberOf sh:property _:J6oM5_XpnurGwjWpP_-Afm .
