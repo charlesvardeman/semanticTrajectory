@@ -1,0 +1,247 @@
+# baseURI: https://w3id.org/landrs/trajectory
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2006/time
+
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix trajectory: <https://w3id.org/landrs/trajectory/> .
+
+
+
+################################################################
+#    Object Properties
+#################################################################
+traj:atTime
+  a owl:ObjectProperty ;
+  rdfs:label "at Time";
+  rdfs:comment "Temoral relation at which a fix occurs" ;
+  schema:domainIncludes traj:Fix ;
+  schema:rangeIncludes time:TemporalEntity ;
+  rdfs:isDefinedBy trajectory: ;
+.
+
+traj:endsAt
+  a owl:ObjectProperty ;
+  rdfs:label "ends At" ;
+  rdfs:comment "Fix which a segment ends at" ;
+  schema:domainIncludes trajectory:Segment ;
+  schema:rangeIncludes trajectory:Fix ;
+  rdfs:isDefinedBy trajectory: ;
+.
+
+trajectory:hasAttribute
+  a owl:ObjectProperty ;
+  rdfs:label "has Attribute";
+  rdfs:comment "Relation to annotate Segments or Fixes" ;
+  schema:domainIncludes trajectory:Fix ;
+  schema:domainIncludes trajectory:Segment ;
+  schema:rangeIncludes trajectory:Attribute ;
+  rdfs:isDefinedBy trajectory: ;
+.
+
+trajectory:hasCreator
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf sosa:madeBySensor ;
+  rdfs:label "has Creator" ;
+  rdfs:comment "Relation between a Sensor Source for a Fix and a fix." ;
+  schema:domainIncludes traj:Fix ;
+  schema:rangeInclude traj:Source ;
+  rdfs:isDefinedBy trajectory: ;
+.
+
+trajectory:hasFix
+  a owl:ObjectProperty ;
+  rdfs:label "has Fix"@en ;
+  rdfs:comment "Relation between a semantic trajectory and a Fix"@en ;
+  owl:propertyChainAxiom ( traj:hasSegment traj:endsAt);
+  owl:propertyChainAxiom ( traj:hasSegment traj:startsFrom ) ;
+  rdfs:isDefinedBy trajectory:
+.
+
+### THIS IS BROKEN
+trajectory:hasLocation
+  a owl:ObjectProperty ;
+  rdfs:label "has Location" ;
+  rdfs:comment "Link to location footprint" ;
+  schema:domainIncludes trajectory:Fix ;
+  schema:rangeIncludes <geosparqlURI> ;
+  rdfs:isDefinedBy trajectory:
+.
+
+trajectory:hasNext
+  a owl:ObjectProperty ;
+  rdfs:label "has Next" ;
+  rdfs:comment "" ;
+  rdfs:subPropertyOf traj:hasSuccessor ;
+  owl:inverseOf traj:hadPrevious ;
+  owl:propertyChainAxiom ( [ owl:inverseOf traj:startsFrom ]traj:endsAt
+  ) ;
+  rdfs:isDefinedBy trajectory:
+.
+
+trajectory:hasPredecessor
+  a owl:ObjectProperty ;
+  rdfs:label "has Predecessor" ;
+  rdfs:comment "" ;
+  owl:inverseOf trajectory:hasSuccessor ;
+.
+
+trajectory:hasPrevious ;
+  a owl:ObjectProperty ;
+  rdfs:label "has Previous"@en ;
+  rdfs:comment ""@en ;
+.
+
+trajectory:hasSegment
+  a owl:ObjectProperty ;
+  rdfs:label "has Segment";
+  rdfs:comment ""@en ;
+  rdfs:isDefinedBy trajectory:
+.
+
+#################################################################
+#    Classes
+#################################################################
+trajectory:SpatialFeatureOfInterest a owl:class;
+  rdfs:subClassOf sosa:FeatureOfInterest ;
+  rdfs:subClassOf geosparql:Feature ;
+  rdfs:label "Spatial Feature of Interest"@en ;
+  rdfs:comment "Entity that is both a spatial feature and feature of interest in an observations"@en;
+  rdfs:isDefinedBy trajectory: ;
+.
+
+trajectory:MovingObject a owl:class ;
+  rdfs:subClassOf trajectory:SpatialFeatureOfInterest
+  rdfs:label "Moving Object"@en ;
+  skos:altLabel "Moving Feature"@en;
+  skos:exactMatch <> ;
+  rdfs:comment "A spatial feature and observation feature of interest that traverses some trajectory by changing position over time"@en ;
+  rdfs:isDefinedBy trajectory ;
+.
+
+trajectory:Source a owl:class ;
+  rdfs:subClassOf sosa:Sensor ;
+  rdfs:label "Sensor Source"@en ;
+  rdfs:comment "Sensor that is the source of some trajectory observation for position or time."@en;
+  rdfs:isDefinedBy trajectory: ;
+.
+
+trajectory:Trajectory a owl:class ;
+  rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:someValuesFrom trajectory:Segment ;
+  ]
+  rdfs:label "Trajectory"@en ;
+  rdfs:comment "Path of a moving point described by a one parameter set of points."@en ;
+.
+
+trajectory:Attribute a owl:class ;
+  rdfs:label "Attribute"@en ;
+  rdfs:comment "Generic class and relation to connect fixes and segments to their attribute values such as the speed at a particular fix or the bearing on a segment."@en ;
+  rdfs:isDefinedBy trajectory: ;
+.
+
+trajectory:Fix a owl:Class ;
+  rdfs:subClassOf sosa:Observation ;
+  rdfs:subClassOf time:Instant ;
+  rdfs:label "Fix"@en ;
+  rdfs:comment "A fix is defined as a spatiotemporal point {x_i
+,y_i, z_i, t_i} indicating the position of a moving object at an instant of time. Fixes have time stamps, positions and belong to a trajectory"@en;
+   rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:someValuesFrom time:TemporalEntity ;
+    owl:onProperty trajectory:atTime
+   ] ;
+   rdfs:subClassOf [
+     a owl:Restriction ;
+     owl:someValuesFrom trajectory:Position ;
+     owl:onProperty trajectory:hasLocation
+   ] ;
+   rdfs:subClassOf [
+     a owl:Restriction ;
+     owl:someValuesFrom trajectory:Trajectory ;
+     owl:onProperty [ owl:inverseOf trajectory:hasFix ]
+  ] ;
+  rdfs:isDefinedBy trajectory:
+.
+
+trajectory:Segment a owl:Class ;
+  rdfs:subClassOf time:ProperInterval ;
+  rdfs:label "Segment"@en;
+  rdfs:comment "A segment is defined by a starting fix {x_i,y_i
+,z_i, t_i} and an ending fix {x_j ,y_j, z_j, t_j}. t_i < t_j , {x_i,y_i, z_i} is not necessarily different from {x_j, y_j,z_j} as the moving object may stay at a the same position for a time period."@en ;
+  rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:someValuesFrom trajectory:Fix ;
+    owl:onProperty trajectory:endsAt
+  ] ;
+  rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:someValuesFrom trajectory:Fix ;
+    owl:onProperty trajectory:startsFrom
+  ] ;
+  rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:someValuesFrom trajectory:Fix ;
+    owl:onProperty trajectory:endsAt
+  ] ;
+  rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:someValuesFrom trajectory:Trajectory ;
+    owl:onProperty [owl:inverseOf trajectory:hasSegment]
+  ] ;
+.
+
+trajectory:StartingFix a owl:Class ;
+  rdfs:label "Starting Fix"@en ;
+  rdfs:comment "Fix that has the earlies timestamp and links to only one segment through the inverse of startsFrom"@en
+.
+
+trajectory:EndingFix a owl:Class ;
+  rdfs:label "Ending Fix"@en ;
+  rdfs:comment "Fix that has the latest timestamp and which links to only one segment through the envers of to"@en
+.
+
+trajectory:StartingSegment a owl:Class ;
+  rdfs:label "Starting Segment";
+  rdfs:comment "Segment that is the start of a trajectory"
+.
+
+trajectory:EndingSegment a owl:Class ;
+  rdfs:label "Ending Segment";
+  rdfs:comment "Segment that ends a trajectory"
+.
+
+<https://w3id.org/landrs/trajectory/>
+  a owl:Ontology, voaf:Vocabulary ;
+  dct:created "2020-08-04"^^xsd:date ;
+  dct:creator <https://orcid.org/0000-0003-4091-6059> ;
+  dct:license <https://creativecommons.org/share-your-work/public-domain/cc0/> ;
+  dct:modified "2020-08-04"^^xsd:date ;
+  dct:title "Alignment of Semantic Trajectory with GeoSPARQL, SOSA and OWL-Time" ;
+  rdfs:label "Semantic Trajectory" ;
+  rdfs:comment """This document describes some extensions to OWL-Time to represent temporal entities composed of other temporal entities.
+  New classes and properties are specified in the original OWL-Time namespace.
+  The classes, properties, and axioms in this RDF graph are described in https://w3c.github.io/sdw/time-aggregates/
+  Their status is non-normative, and OWL-Time applications are not required to recognize or support them. """ ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports time: ;
+  owl:imports ssn: ;
+  vann:preferredNamespacePrefix "trajectory" ;
+  vann:preferredNamespaceUri "https://w3id.org/landrs/trajectory/" ;
+.
+
+
+
